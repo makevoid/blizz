@@ -9,7 +9,6 @@ class Blizz
   end
 
   module Resource
-    # DEFAULT_TYPE = "text"
 
     def klass
       self.class
@@ -44,10 +43,6 @@ class Blizz
 
         instance_variable_set "@#{key}", val
       end
-
-      val = hash[:type]# || DEFAULT_TYPE
-      klass.create_accessor :type
-      instance_variable_set "@type", val
     end
 
     def array_of_hashes?(val)
