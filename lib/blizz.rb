@@ -46,7 +46,7 @@ class Blizz
       end
 
       val = hash[:type]# || DEFAULT_TYPE
-      Example.create_accessor :type
+      klass.create_accessor :type
       instance_variable_set "@type", val
     end
 
