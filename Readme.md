@@ -1,13 +1,21 @@
 # Blizz
 [ruby]
 
-Blizz let's you easily load hashes into objects
+Blizz let's you easily load hashes into objects, adding accessors, without modifying too much your base class
 
-    class Example
-      include Blizz::Resource
-    end
+```ruby
+class Example
+  include Blizz::Resource
+end
 
-    example = Blizz.load Example, hash
-    example.a.should == "aaa"
-    example.b.should == "bbb"
-    example.should be_a Example
+hash = { a: "b", c: "d" }
+
+example = Blizz.load Example, hash
+p example.a # => "b"
+p example.c # => "d"
+p example.class # => Example
+```
+
+Simple isn't it?
+
+Useful for prototyping domain models, DDD, etc :)
