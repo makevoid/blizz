@@ -27,10 +27,6 @@ class Blizz
       def create_accessors(hash)
         attr_accessor *hash.keys
       end
-
-      def create_accessor(name)
-        attr_accessor name
-      end
     end
 
     private
