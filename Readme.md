@@ -19,3 +19,6 @@ p example.class # => Example
 Simple isn't it?
 
 Useful for prototyping domain models, DDD, etc :)
+
+
+TODO: release it as a gem asap :)
