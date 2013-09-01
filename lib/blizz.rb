@@ -1,6 +1,6 @@
 class Blizz
 
-  VERSION = "0.1"
+  VERSION = "0.2"
 
   def self.load(klass, hash)
     page = klass.new
@@ -47,8 +47,12 @@ class Blizz
 
     def replace_contents(array)
       array.map do |hash|
-        klass = Object.const_get hash[:type]
-        Blizz.load klass, hash
+        if hash[:type]
+          klass = Object.const_get hash[:type]
+          Blizz.load klass, hash
+        else
+          hash
+        end
       end
     end
 
