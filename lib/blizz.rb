@@ -2,9 +2,9 @@ class Blizz
 
   VERSION = "0.2"
 
-  def self.load(klass, hash)
+  def self.load(klass, hash, selection=nil)
     page = klass.new
-    page.load hash
+    page.load hash, selection
     page
   end
 
@@ -14,9 +14,9 @@ class Blizz
       self.class
     end
 
-    def load(hash)
+    def load(hash, selection)
       klass.create_accessors hash
-      load_contents hash
+      load_contents hash, selection
     end
 
     def self.included(mod)
@@ -31,8 +31,10 @@ class Blizz
 
     private
 
-    def load_contents(hash)
+    def load_contents(hash, selection)
       hash.map do |key, val|
+        next if selection && !selection.include?(key.to_sym)
+
         if array_of_hashes? val
           val = replace_contents val
         end
