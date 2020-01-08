@@ -6,6 +6,10 @@ Blizz let's you easily load hashes into objects, adding accessors, without modif
 ```ruby
 class Example
   include Blizz::Resource
+  
+  def foo
+    "bar"
+  end
 end
 
 hash = { a: "b", c: "d" }
@@ -13,6 +17,7 @@ hash = { a: "b", c: "d" }
 example = Blizz.load Example, hash
 p example.a # => "b"
 p example.c # => "d"
+p example.foo # => "bar"
 p example.class # => Example
 ```
 
